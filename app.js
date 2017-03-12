@@ -1,18 +1,20 @@
 'use strict';
 
 var express = require('express');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 
 var app = express();
 
+app.use(bodyParser.json());
+app.use(logger('dev'));
+
 app.use(express.static(__dirname + '/public'));
 
-// TODO - Body Parser
-// TODO - Logger
 // TODO - Database connection
 // TODO - Routes
-app.get('/login', function(req, res) {
-	res.send('You clicked Login Page');
-});
+app.use('/Login', require('./routes/login'));
+
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
