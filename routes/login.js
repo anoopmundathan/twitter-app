@@ -1,10 +1,15 @@
 'use strict';
 
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
+var mid = require('../middleware/auth');
+var config = require('../config/config');
 
-router.get('/', function(req, res) {
-	res.send('Twitter Login Page');
+router.get('/', mid.getRequestToken, function(req, res, next) {
+
+	// Redirecting the user
+	res.redirect(config.authorize_url + '?oauth_token=' + req.oauth_token);
 });
+
+
 
 module.exports = router;

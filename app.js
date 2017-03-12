@@ -9,12 +9,13 @@ var app = express();
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+// Serve static page from public folder
 app.use(express.static(__dirname + '/public'));
 
 // TODO - Database connection
 // TODO - Routes
-app.use('/Login', require('./routes/login'));
-
+app.use('/login', require('./routes/login'));
+app.use('/authorize', require('./routes/authorize'));
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -32,7 +33,6 @@ app.use(function(err, req, res, next) {
 		}
 	});
 });
-
 
 
 var PORT = process.env.PORT || 3000;
