@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect app.js"
+    "start": "nodemon --inspect app.js",
+    "bundle": "./node_modules/.bin/webpack --watch"
   },
   "keywords": [
     "twitter"
@@ -13,10 +14,14 @@
   "author": "Anoop Mundathan <anoop.mundathan@gmail.com> (http://anoopmundathan.me/)",
   "license": "ISC",
   "dependencies": {
+    "angular": "1.6.3",
     "body-parser": "1.17.1",
     "cookie-parser": "1.4.3",
     "express": "4.15.2",
     "morgan": "1.8.1",
     "oauth": "0.9.15"
+  },
+  "devDependencies": {
+    "webpack": "2.2.1"
   }
 }
