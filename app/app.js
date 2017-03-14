@@ -1,3 +1,7 @@
 var angular = require('angular');
 
-angular.module('app', []);
+var twitterApp = angular.module('twitterApp', [require('angular-route')]);
+
+twitterApp.controller('mainController', function($scope) {
+	$scope.message = "Hello Twitter";
+});

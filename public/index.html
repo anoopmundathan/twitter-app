@@ -10,13 +10,11 @@
 			}
 		</style>
 	</head>
-	<body>
-		<div class="container">
-			<header>
-				<h1>Twitter App</h1>
-			</header>
-			<a href="/login">Login</a>
+	<body ng-app="twitterApp">
+		<div ng-controller="mainController">
+			{{message}}
 		</div>
-		<script src="./scripts/app.js"></script>
+		<script src="/scripts/vendor.bundle.js"></script>
+		<script src="/scripts/app.bundle.js"></script>
 	</body>
  </html>
