@@ -1,15 +1,10 @@
 'use strict';
 
 var router = require('express').Router();
-var mid = require('../middleware/auth');
+var mid = require('../middleware/access-token');
 
-router.get('/', mid.oauthObject.getAccessToken, mid.oauthObject.getFriendList, function(req, res, next) {
-
-	var arr = [];
-	req.data.users.forEach(function(user) {
-		arr.push(user.name);
-	});
-	res.json(arr);
+router.get('/', mid.getAccessToken, function(req, res, next) {
+	res.send('Access token received');
 });
 
 module.exports = router;

@@ -14,9 +14,12 @@ app.use(logger('dev'));
 // Serve static page from public folder
 app.use(express.static(__dirname + '/public'));
 
+
 // TODO - Database connection
 // TODO - Routes
 app.use('/login', require('./routes/login'));
+
+// callback url 
 app.use('/authorize', require('./routes/authorize'));
 
 // Catch 404 and forward to error handler

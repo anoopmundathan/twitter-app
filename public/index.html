@@ -8,11 +8,21 @@
 			* {
 				box-sizing: border-box;
 			}
+
+			html,
+			body {
+				text-align: center;
+				font-family: 'Helvetica Neue';
+			}
+
 		</style>
 	</head>
 	<body ng-app="twitterApp">
-		<div ng-controller="mainController">
-			{{message}}
+		<header>
+			<h1>twitter #tag-app</h1>
+		</header>
+		<div>
+			<ng-view></ng-view>
 		</div>
 		<script src="/scripts/vendor.bundle.js"></script>
 		<script src="/scripts/app.bundle.js"></script>
