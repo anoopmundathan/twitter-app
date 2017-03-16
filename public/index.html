@@ -8,28 +8,51 @@
 			* {
 				box-sizing: border-box;
 			}
-			html,
 			body {
-				font-family: 'Helvetica Neue';
+				font-family: 'Nunito', sans-serif;
+				line-height: 2;
+				color: #616161;
+				padding: 40px 40px;
 			}
-
+			ul {
+				list-style: none;
+				width: 50%;
+				margin: auto;
+			}
 			li {
 				list-style: none;
+				padding: 15px 10px;
+			}
+
+			li:nth-of-type(odd) {
+				background: #52bab3;
+				color: white;
+			}
+
+			a {
+				text-decoration: none;
+				background: #ff784f;
+				color: white;
+				padding: 10px 10px;
+				border-radius: 3px;
+				margin: 5px;
 			}
 
 		</style>
 	</head>
 	<body ng-app="twitterApp" ng-controller="mainController">
+
 		<header>
 			<h1>twitter #tag-app</h1>
 		</header>
+
 		<div>
+			<nav>
+				<a href="" ng-click="loadTweets()">Tweets</a>
+				<a href="">Profile</a>
+				<a href="">Logout</a>
+			</nav>
 
-			{{hello}}
-
-			<div>
-				<a href="" ng-click="loadTweets()">Load my tweets</a>
-			</div>
 			<div>
 				<ul>
 					<li ng-repeat="tweet in tweets">
