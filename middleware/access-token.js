@@ -7,10 +7,13 @@ module.exports.getAccessToken = function(req, res, next) {
 	var oauthTokenSecret = req.cookies.oauth_token_secret;
 	var oauthVerifier = req.query.oauth_verifier;
 
+	//TODO clear oauth token
+	
 	oauth.getOAuthAccessToken(oauthToken, oauthTokenSecret, oauthVerifier, 
 		function(err, oauth_access_token, oauth_access_token_secret, results) {
 			if (err) return next(err);
 
+			// Send access token cookies to client
 			res.cookie('oauth_access_token', oauth_access_token, { httpOnly: true });
 			res.cookie('oauth_access_token_secret', oauth_access_token_secret, { httpOnly: true });
 

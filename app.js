@@ -11,14 +11,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger('dev'));
 
-// TODO - Database connection
+// Serve static page from public folder
+// app.use(express.static(__dirname + '/public'));
 
-// Route middleware
+
+// TODO - Database connection
+// TODO - Routes
 app.use('/app', require('./routes/app'));
 app.use('/login', require('./routes/login'));
 app.use('/authorize', require('./routes/authorize'));
 
-// Make /app as default route
 app.get('/', function(req, res) {
 	return res.redirect('/app');
 });

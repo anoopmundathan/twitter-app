@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var router = require('express').Router();
+var twitter = require('../middleware/twitter');
 
 router.use(function(req, res, next) {	
 	// Not authenticated earlier
@@ -8,6 +9,12 @@ router.use(function(req, res, next) {
 		return res.redirect('/login');
 	}
 	next();
+});
+
+router.get('/tweets', function(req, res, next) {
+	twitter.loadTweets(req, res, function(response) {
+		res.send(response);
+	});
 });
 
 // Serve angular app once authenticated

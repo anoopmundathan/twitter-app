@@ -8,11 +8,13 @@
 			* {
 				box-sizing: border-box;
 			}
-
 			html,
 			body {
-				text-align: center;
 				font-family: 'Helvetica Neue';
+			}
+
+			li {
+				list-style: none;
 			}
 
 		</style>
@@ -22,7 +24,19 @@
 			<h1>twitter #tag-app</h1>
 		</header>
 		<div>
+
 			{{hello}}
+
+			<div>
+				<a href="" ng-click="loadTweets()">Load my tweets</a>
+			</div>
+			<div>
+				<ul>
+					<li ng-repeat="tweet in tweets">
+						{{tweet}}
+					</li>
+				</ul>
+			</div>
 		</div>
 		<script src="scripts/vendor.bundle.js"></script>
 		<script src="scripts/app.bundle.js"></script>
