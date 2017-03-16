@@ -11,16 +11,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger('dev'));
 
-// Serve static page from public folder
-app.use(express.static(__dirname + '/public'));
-
-
 // TODO - Database connection
 // TODO - Routes
+app.use('/app', require('./routes/app'));
 app.use('/login', require('./routes/login'));
-
-// callback url 
 app.use('/authorize', require('./routes/authorize'));
+
+// Make /app as default route
+app.get('/', function(req, res) {
+	return res.redirect('/app');
+});
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

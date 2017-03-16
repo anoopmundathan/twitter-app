@@ -2,10 +2,10 @@
   "name": "twitter-hashtag",
   "version": "1.0.0",
   "description": "Get Random twitter #hashtag",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect app.js",
+    "start": "nodemon --inspect server.js",
     "bundle": "./node_modules/.bin/webpack --watch"
   },
   "keywords": [
