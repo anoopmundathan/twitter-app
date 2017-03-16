@@ -49,7 +49,7 @@
 		<div>
 			<nav>
 				<a href="" ng-click="loadTweets()">Tweets</a>
-				<a href="">Profile</a>
+				<a href="" ng-click="loadProfile()">Profile</a>
 				<a href="">Logout</a>
 			</nav>
 
@@ -58,6 +58,14 @@
 					<li ng-repeat="tweet in tweets">
 						{{tweet}}
 					</li>
+				</ul>
+			</div>
+			<div ng-show="profile">
+				<ul>
+					<li>{{profile.name}}</li>
+					<li>{{profile.screen_name}}</li>
+					<li>{{profile.location}}</li>
+					<li>{{profile.description}}</li>
 				</ul>
 			</div>
 		</div>

@@ -17,6 +17,12 @@ router.get('/tweets', function(req, res, next) {
 	});
 });
 
+router.get('/profile', function(req, res, next) {
+	twitter.loadProfile(req, res, function(response) {
+		res.send(response);
+	});
+});
+
 // Serve angular app once authenticated
 router.use('/', express.static('public'));
 

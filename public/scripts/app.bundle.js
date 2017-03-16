@@ -13,6 +13,8 @@ twitterApp.controller('mainController', function($scope, $http) {
 	$scope.tweets = [];
 
 	function loadTweets() {
+		$scope.profile = "";
+
 		$http.get('/app/tweets')
 			.then(function(response) {
 				response.data.forEach(function(item) {
@@ -21,7 +23,17 @@ twitterApp.controller('mainController', function($scope, $http) {
 			});
 	}
 
+	function loadProfile() {
+		$scope.tweets = [];
+
+		$http.get('/app/profile')
+			.then(function(response) {
+				$scope.profile = response.data;
+			});
+	}
+
 	$scope.loadTweets = loadTweets;
+	$scope.loadProfile = loadProfile;
 });
 
 
