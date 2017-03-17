@@ -17,6 +17,7 @@ app.use(logger('dev'));
 app.use('/app', require('./routes/app'));
 app.use('/login', require('./routes/login'));
 app.use('/authorize', require('./routes/authorize'));
+app.use('/logout', require('./routes/logout'));
 
 // Make /app as default route
 app.get('/', function(req, res) {

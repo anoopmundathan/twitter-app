@@ -12,24 +12,33 @@
 				font-family: 'Nunito', sans-serif;
 				line-height: 2;
 				color: #616161;
-				padding: 40px 40px;
+				
 			}
-			ul {
-				list-style: none;
-				width: 50%;
-				margin: auto;
+			header, nav {
+				text-align: center;
 			}
-			li {
-				list-style: none;
-				padding: 15px 10px;
+			.container {
+				width: 100%;
 			}
 
+			main {
+				margin-top: 30px;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			li {
+				padding: 3px;
+			}
 			li:nth-of-type(odd) {
 				background: #52bab3;
 				color: white;
 			}
 
-			a {
+			a { 
 				text-decoration: none;
 				background: #ff784f;
 				color: white;
@@ -40,35 +49,25 @@
 
 		</style>
 	</head>
-	<body ng-app="twitterApp" ng-controller="mainController">
+	<body ng-app="twitterApp">
 
-		<header>
-			<h1>twitter #tag-app</h1>
-		</header>
+		<div class="container">
+			<header>
+				<h1>twitter #tag-app</h1>
+			</header>
 
-		<div>
 			<nav>
-				<a href="" ng-click="loadTweets()">Tweets</a>
-				<a href="" ng-click="loadProfile()">Profile</a>
-				<a href="">Logout</a>
+				<a href="#/tweets">Tweets</a>
+				<a href="#/profile">Profile</a>
+				<a href="#/logout">Logout</a>
 			</nav>
 
-			<div>
-				<ul>
-					<li ng-repeat="tweet in tweets">
-						{{tweet}}
-					</li>
-				</ul>
-			</div>
-			<div ng-show="profile">
-				<ul>
-					<li>{{profile.name}}</li>
-					<li>{{profile.screen_name}}</li>
-					<li>{{profile.location}}</li>
-					<li>{{profile.description}}</li>
-				</ul>
-			</div>
+			<main>
+				<ng-view></ng-view>	
+			</main>
+			
 		</div>
+		
 		<script src="scripts/vendor.bundle.js"></script>
 		<script src="scripts/app.bundle.js"></script>
 	</body>

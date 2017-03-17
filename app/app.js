@@ -2,31 +2,53 @@ var angular = require('angular');
 
 var twitterApp = angular.module('twitterApp', [require('angular-route')]);
 
-twitterApp.controller('mainController', function($scope, $http) {
+// config
+
+twitterApp.config(function($routeProvider, $locationProvider) {
 	
-	$scope.hello = "You are succesfully authenticated...time to show some tweets";
+	$locationProvider.hashPrefix('');
+
+	$routeProvider
+
+		// route for tweets
+		.when('/tweets', {
+			templateUrl: 'templates/tweets.html',
+			controller: 'tweetsController'
+		})
+
+		// route for profile
+		.when('/profile', {
+			templateUrl: 'templates/profile.html',
+			controller: 'profileController'	
+		})
+
+		// route for logout
+		.when('/logout', {
+			controller: 'logoutController'
+		});
+});
+
+twitterApp.controller('tweetsController', function($scope, $http) {
 	$scope.tweets = [];
+	$http.get('/app/tweets')
+	.then(function(response) {
+		response.data.forEach(function(item) {
+			$scope.tweets.push(item.text);
+		});
+	}, function(error) {
+		console.log('error');
+	});
+});
 
-	function loadTweets() {
-		$scope.profile = "";
+twitterApp.controller('profileController', function($scope, $http) {
+	$http.get('/app/profile')
+	.then(function(response) {
+		$scope.profile = response.data;
+	}, function(error) {
+		console.log('error');
+	});
+});
 
-		$http.get('/app/tweets')
-			.then(function(response) {
-				response.data.forEach(function(item) {
-					$scope.tweets.push(item.text);
-				});
-			});
-	}
-
-	function loadProfile() {
-		$scope.tweets = [];
-
-		$http.get('/app/profile')
-			.then(function(response) {
-				$scope.profile = response.data;
-			});
-	}
-
-	$scope.loadTweets = loadTweets;
-	$scope.loadProfile = loadProfile;
+twitterApp.controller('logoutController', function($scope, $location) {
+	$location.path('/');
 });

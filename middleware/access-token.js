@@ -3,12 +3,15 @@ var oauth = require('./oauth');
 
 module.exports.getAccessToken = function(req, res, next) {
 	
+	//TODO clear oauth token
+	res.clearCookie('oauth_token');
+	res.clearCookie('oauth_token_secret');
+	
 	var oauthToken = req.cookies.oauth_token;
 	var oauthTokenSecret = req.cookies.oauth_token_secret;
 	var oauthVerifier = req.query.oauth_verifier;
 
-	//TODO clear oauth token
-	
+
 	oauth.getOAuthAccessToken(oauthToken, oauthTokenSecret, oauthVerifier, 
 		function(err, oauth_access_token, oauth_access_token_secret, results) {
 			if (err) return next(err);
