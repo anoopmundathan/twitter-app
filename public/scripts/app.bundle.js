@@ -29,6 +29,7 @@ twitterApp.config(function($routeProvider, $locationProvider) {
 
 		// route for logout
 		.when('/logout', {
+			templateUrl: 'templates/logout.html',
 			controller: 'logoutController'
 		});
 });
@@ -54,8 +55,10 @@ twitterApp.controller('profileController', function($scope, $http) {
 	});
 });
 
-twitterApp.controller('logoutController', function($scope, $location) {
-	$location.path('/');
+twitterApp.controller('logoutController', function($scope) {
+	// $location.path('/');
+	console.log('logout');
+	console.log($cookies);
 });
 
 
